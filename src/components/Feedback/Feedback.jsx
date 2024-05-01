@@ -1,8 +1,8 @@
-//import css from "../Feedback/Feedback.module.css";
+import css from "../Feedback/Feedback.module.css";
 
 export default function Feedback({ value, total, percentFeedback }) {
   return (
-    <div>
+    <div className={css.feedback}>
       <p>Good:{value.good}</p>
       <p>Neutral:{value.neutral}</p>
       <p>Bad:{value.bad}</p>

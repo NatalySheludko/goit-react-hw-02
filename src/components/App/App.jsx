@@ -5,41 +5,40 @@ import Feedback from "../Feedback/Feedback";
 import { useState } from "react";
 
 export default function App() {
+	
   const [clicks, setClicks] = useState({
     good: 0,
     neutral: 0,
     bad: 0,
   });
-  const handleClick = () => {
-    setClicks(clicks + 1);
-  };
-  const updateGood = () => {
+
+  const updateFeedback = (feedbackType) => {
     setClicks({
       ...clicks,
-      good: clicks.good + 1,
-    });
-  };
-  const updateNeutral = () => {
-    setClicks({
-      ...clicks,
-      neutral: clicks.neutral + 1,
-    });
-  };
-  const updateBad = () => {
-    setClicks({
-      ...clicks,
-      bad: clicks.bad + 1,
+      [feedbackType]: clicks[feedbackType] + 1,
     });
   };
 
+  // const handleReset = () => {
+  //   setClicks({
+  //     ...clicks,
+  //     good: 0,
+  //     neutral: 0,
+  //     bad: 0,
+  //   });
+  // };
+
+  //const total = clicks.good + clicks.neutral + clicks.bad;
+
   return (
-    <>
+    <div>
       <Description />
-      <Options onUpdate={handleClick}></Options>
-      <Options onClick={updateGood}>Good:</Options>
-      <Options onClick={updateNeutral}>Neutral:</Options>
-      <Options onClick={updateBad}>Bad:</Options>
+
+			<Options onUpdate={updateFeedback} />
+    
+      {/* <Options onReset={handleReset}/> */}
+
       <Feedback value={clicks} />
-    </>
+    </div>
   );
 }

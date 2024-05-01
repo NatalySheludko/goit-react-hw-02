@@ -3,9 +3,9 @@ import Options from "../Options/Options";
 import Feedback from "../Feedback/Feedback";
 //import css from "../App/App.module.css";
 import { useState } from "react";
+import Notification from "../Nitification/Notification";
 
 export default function App() {
-	
   const [clicks, setClicks] = useState({
     good: 0,
     neutral: 0,
@@ -28,17 +28,19 @@ export default function App() {
   //   });
   // };
 
-  //const total = clicks.good + clicks.neutral + clicks.bad;
+  const totalFeedback = clicks.good + clicks.neutral + clicks.bad;
+  console.log(totalFeedback);
 
   return (
     <div>
       <Description />
 
-			<Options onUpdate={updateFeedback} />
-    
+      <Options onUpdate={updateFeedback} />
       {/* <Options onReset={handleReset}/> */}
 
-      <Feedback value={clicks} />
+      <div>
+        {!totalFeedback ? <Notification /> : <Feedback value={clicks} />}
+      </div>
     </div>
   );
 }

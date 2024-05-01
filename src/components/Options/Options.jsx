@@ -1,12 +1,12 @@
 //import css from "../Options/Options.module.css";
 
-export default function Options({ onUpdate }) {
+export default function Options({ onUpdate, showResetBtn, onReset }) {
   return (
     <div>
       <button onClick={() => onUpdate("good")}>Good</button>
       <button onClick={() => onUpdate("neutral")}>Neutral</button>
       <button onClick={() => onUpdate("bad")}>Bad</button>
-      {/* <button onClick={onReset}>Reset</button> */}
+      {showResetBtn && <button onClick={onReset}>Reset</button>}
     </div>
   );
 }

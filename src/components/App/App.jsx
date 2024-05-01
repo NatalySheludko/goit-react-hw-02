@@ -19,24 +19,26 @@ export default function App() {
     });
   };
 
-  // const handleReset = () => {
-  //   setClicks({
-  //     ...clicks,
-  //     good: 0,
-  //     neutral: 0,
-  //     bad: 0,
-  //   });
-  // };
+  const handleReset = () => {
+    setClicks({
+      ...clicks,
+      good: 0,
+      neutral: 0,
+      bad: 0,
+    });
+  };
 
   const totalFeedback = clicks.good + clicks.neutral + clicks.bad;
-  console.log(totalFeedback);
 
   return (
     <div>
       <Description />
 
-      <Options onUpdate={updateFeedback} />
-      {/* <Options onReset={handleReset}/> */}
+      <Options
+        onUpdate={updateFeedback}
+        onReset={handleReset}
+        showResetBtn={totalFeedback > 0}
+      />
 
       <div>
         {!totalFeedback ? <Notification /> : <Feedback value={clicks} />}

@@ -3,7 +3,7 @@ import Options from "../Options/Options";
 import Feedback from "../Feedback/Feedback";
 import css from "../App/App.module.css";
 import { useState, useEffect } from "react";
-import Notification from "../Nitification/Notification";
+import Notification from "../Notification/Notification";
 
 export default function App() {
   const [clicks, setClicks] = useState(() => {
